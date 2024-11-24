@@ -1,0 +1,190 @@
+{
+	"info": {
+		"_postman_id": "38e05477-f221-4746-bb90-bdd311f93dcc",
+		"name": "Wallet System Documentation",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28653221"
+	},
+	"item": [
+		{
+			"name": "Check Wallet Details",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 1|6b1rFomqR2o8UIJEjow5o7jcbXckk01nLEkl50EQ77d8662f",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/wallet",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"wallet"
+					]
+				},
+				"description": "**Purpose:** Fetch wallet details for the authenticated user.\n\n- **Functionality:**\n    \n    - Returns the current balance and wallet details (like user ID and timestamps).\n        \n    - Requires the user to be authenticated with a Bearer token."
+			},
+			"response": []
+		},
+		{
+			"name": "Fund Wallet",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 1|6b1rFomqR2o8UIJEjow5o7jcbXckk01nLEkl50EQ77d8662f",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"amount\": 500 }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/wallet/fund",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"wallet",
+						"fund"
+					]
+				},
+				"description": "- **Purpose:** Fund the user's wallet with a specified amount.\n    \n- **Functionality:**\n    \n    - Increases the wallet balance by the amount specified in the request body.\n        \n    - Logs the transaction as a \"funding\" transaction."
+			},
+			"response": []
+		},
+		{
+			"name": "Withdraw Wallet",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 1|6b1rFomqR2o8UIJEjow5o7jcbXckk01nLEkl50EQ77d8662f",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"amount\": 50 }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/wallet/withdraw",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"wallet",
+						"withdraw"
+					]
+				},
+				"description": "- **Purpose:** Withdraw a specified amount from the user's wallet.\n    \n- **Functionality:**\n    \n    - Decreases the wallet balance by the specified amount.\n        \n    - Ensures the user has sufficient balance before proceeding.\n        \n    - Logs the transaction as a \"withdrawal\" transaction."
+			},
+			"response": []
+		},
+		{
+			"name": "View Transactions",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 1|6b1rFomqR2o8UIJEjow5o7jcbXckk01nLEkl50EQ77d8662f",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/transactions",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"transactions"
+					]
+				},
+				"description": "- **Purpose:** Retrieve all transactions for the authenticated user.\n    \n- **Functionality:**\n    \n    - Returns a list of transactions, including funding and withdrawals.\n        \n    - Transactions include details like type, amount, and description"
+			},
+			"response": []
+		},
+		{
+			"name": "Purchase Airtime",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 1|6b1rFomqR2o8UIJEjow5o7jcbXckk01nLEkl50EQ77d8662f",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"amount\": 100 }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/purchase/airtime",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"purchase",
+						"airtime"
+					]
+				},
+				"description": "- **Purpose:** Simulate an airtime purchase by deducting the wallet balance.\n    \n- **Functionality:**\n    \n    - Deducts the specified amount from the user's wallet.\n        \n    - Logs the transaction as a \"purchase\" transaction with a description."
+			},
+			"response": []
+		}
+	]
+}
